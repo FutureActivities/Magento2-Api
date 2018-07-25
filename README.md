@@ -123,11 +123,11 @@ Adds `display_currency` to extension attributes
 
 ## CHANGELOG
 
-## v1.6
+### v1.6
 - Tidied up and split filters into a new extension
 
-## v1.5
+### v1.5
 - Added additional plugins to fix Magento bug #8700
 
-## v1.4
+### v1.4
 - Added a new customer downloads feed
