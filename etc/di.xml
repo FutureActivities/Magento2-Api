@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <preference for="FutureActivities\Api\Api\PageInterface" type="FutureActivities\Api\Model\Page" />
+   <preference for="FutureActivities\Api\Api\CustomerInterface" type="FutureActivities\Api\Model\Customer" />
+   <preference for="FutureActivities\Api\Api\CategoryInterface" type="FutureActivities\Api\Model\Category" />
+   <preference for="FutureActivities\Api\Api\ProductInterface" type="FutureActivities\Api\Model\Product" />
+   <preference for="FutureActivities\Api\Api\SearchInterface" type="FutureActivities\Api\Model\Search" />
+   <preference for="FutureActivities\Api\Api\Quote\AddressesManagementInterface" type="FutureActivities\Api\Model\Quote\AddressesManagement" />
+   <preference for="FutureActivities\Api\Api\Quote\GuestAddressesManagementInterface" type="FutureActivities\Api\Model\Quote\GuestCart\GuestAddressesManagement" />
+   <preference for="FutureActivities\Api\Api\RatesInterface" type="FutureActivities\Api\Model\Rates" />
+   <preference for="FutureActivities\Api\Api\RateResultInterface" type="FutureActivities\Api\Model\Rates\Rate" />
+   <type name="Magento\Store\Api\Data\StoreInterface">
+      <plugin name="FutureActivities_Api::stores" type="FutureActivities\Api\Plugin\StoreAttributes"/>
+   </type>
+   <type name="Magento\Store\Api\StoreRepositoryInterface">
+      <plugin name="FutureActivities_Api::storeRepository" type="FutureActivities\Api\Plugin\StoreRepository"/>
+   </type>
+   <type name="Magento\Cms\Api\Data\BlockInterface">
+      <plugin name="FutureActivities_Api::cmsBlock" type="FutureActivities\Api\Plugin\Block"/>
+   </type>
+   <type name="Magento\ConfigurableProduct\Model\LinkManagement">
+        <plugin name="FutureActivities_Api::linkManagement" type="FutureActivities\Api\Plugin\LinkManagement" sortOrder="1" disabled="false"/>
+    </type>
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="FutureActivities_Api::get" type="FutureActivities\Api\Plugin\Product"/>
+    </type>
+</config>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../app/code/Magento/Webapi/etc/webapi.xsd">
+    <!-- Get information about a url key -->
+    <route url="/V1/pageKey" method="GET">
+       <service class="FutureActivities\Api\Api\PageInterface" method="getPageKeys"/>
+       <resources>
+           <resource ref="anonymous"/>
+       </resources>
+    </route>
+    <route url="/V1/pageKey/:param" method="GET">
+       <service class="FutureActivities\Api\Api\PageInterface" method="getByUrlKey"/>
+       <resources>
+           <resource ref="anonymous"/>
+       </resources>
+    </route>
+    <!-- Get Product by SKU -->
+    <route url="/V1/productBySku/:sku" method="GET">
+        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Get Product by ID -->
+    <route url="/V1/productById/:productId" method="GET">
+        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Get products name and URLs only - Returns the parent instead of child -->
+    <route url="/V1/fa/productNames" method="GET">
+        <service class="FutureActivities\Api\Api\ProductInterface" method="getProductNames"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Get products, categories & CMS pages summary -->
+    <route url="/V1/fa/searchData" method="GET">
+        <service class="FutureActivities\Api\Api\SearchInterface" method="getSearchData"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Get specific categories and their subcategories -->
+    <route url="/V1/fa/categories" method="GET">
+        <service class="FutureActivities\Api\Api\CategoryInterface" method="getList" />
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Reset a customers password -->
+    <route url="/V1/customers/resetPassword" method="POST">
+        <service class="Magento\Customer\Api\AccountManagementInterface" method="resetPassword"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Allow setting different Billing & Shipping address without requiring a shipping method -->
+    <route url="/V1/carts/mine/addresses" method="POST">
+        <service class="FutureActivities\Api\Api\Quote\AddressesManagementInterface" method="assign"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/guest-carts/:cartId/addresses" method="POST">
+        <service class="FutureActivities\Api\Api\Quote\GuestAddressesManagementInterface" method="assign"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/carts/mine/addresses" method="GET">
+        <service class="FutureActivities\Api\Api\Quote\AddressesManagementInterface" method="get"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/guest-carts/:cartId/addresses" method="GET">
+        <service class="FutureActivities\Api\Api\Quote\GuestAddressesManagementInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <!-- Merge customers guest cart with their logged in cart -->
+    <route url="/V1/carts/mine/transfer/:guestCartId" method="GET">
+       <service class="FutureActivities\Api\Api\CustomerInterface" method="mergeCarts"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <!-- Get tax rate values -->
+    <route url="/V1/taxRates" method="GET">
+        <service class="FutureActivities\Api\Api\RatesInterface" method="getDefaultList"/>
+        <resources>
+           <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/customer/taxRates" method="GET">
+        <service class="FutureActivities\Api\Api\RatesInterface" method="getListByCustomer"/>
+        <resources>
+           <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+    <!-- Customer Downloadable Products -->
+    <route url="/V1/customers/me/downloads" method="GET">
+        <service class="FutureActivities\Api\Api\CustomerInterface" method="getDownloadsList"/>
+        <resources>
+           <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+</routes>
