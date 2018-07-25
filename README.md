@@ -1,6 +1,7 @@
 # FutureActivities API
 
-An extension that provides additional API endpoints and customisations that may be useful.
+This is a Magento 2 extension that provides additional API endpoints and customisations 
+that you may find useful.
 
 ## Endpoints
 
