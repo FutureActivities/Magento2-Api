@@ -82,6 +82,21 @@ interface ProductInterface
     public function getPrice();
     
     /**
+     * Set the tax class id
+     * 
+     * @param int $id
+     * @return $this
+     */
+    public function setTaxClassId($id);
+    
+    /**
+     * Get the tax class id
+     * 
+     * @return int
+     */
+    public function getTaxClassId();
+    
+    /**
      * Set the image
      * 
      * @param string $image

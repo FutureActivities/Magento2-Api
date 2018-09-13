@@ -11,6 +11,7 @@ class Product implements ProductInterface
     protected $url;
     protected $price;
     protected $image;
+    protected $taxClassId;
     
     /**
      * {@inheritdoc}
@@ -90,6 +91,22 @@ class Product implements ProductInterface
     public function getPrice()
     {
         return $this->price;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setTaxClassId($name)
+    {
+        $this->taxClassId = $name;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getTaxClassId()
+    {
+        return $this->taxClassId;
     }
         
     /**
