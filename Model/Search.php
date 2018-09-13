@@ -61,7 +61,7 @@ class Search implements SearchInterface
         $result = [];
         
         $collection = $this->productCollectionFactory->create();
-        $collection->addAttributeToSelect(['name','price','price_from','image','visibility','url_key','status']);
+        $collection->addAttributeToSelect(['name','price','price_from','image','visibility','url_key','status','tax_class_id']);
         
         foreach($collection AS $product) {
             // Skip products not visible
