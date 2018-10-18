@@ -15,6 +15,8 @@ class Product
     {
         $extensionAttributes = $result->getExtensionAttributes();
         
+        $extensionAttributes->setStockStatus($result->isSaleable());
+        
         if ($result->getTypeId() == 'configurable')
             $extensionAttributes->setConfigurableProductOptionsLabels($this->getOptions($result));
         
