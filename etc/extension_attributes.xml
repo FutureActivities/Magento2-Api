@@ -5,8 +5,6 @@
     </extension_attributes>
     <extension_attributes for="Magento\Catalog\Api\Data\ProductInterface">
         <attribute code="configurable_product_options_labels" type="Magento\Framework\Api\AttributeValue[]" />
-    </extension_attributes>
-    <extension_attributes for="Magento\Catalog\Api\Data\ProductInterface">
         <attribute code="stock_status" type="string" />
     </extension_attributes>
 </config>
