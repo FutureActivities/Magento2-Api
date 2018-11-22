@@ -61,7 +61,7 @@ class Search implements SearchInterface
         $result = [];
         
         $collection = $this->productCollectionFactory->create();
-        $collection->addAttributeToSelect(['name','price','price_from','image','visibility','url_key','status','tax_class_id']);
+        $collection->addAttributeToSelect(['name','price','price_from','image','visibility','url_key','status','tax_class_id','meta_keyword']);
         
         foreach($collection AS $product) {
             // Skip products not visible
@@ -71,6 +71,7 @@ class Search implements SearchInterface
             $data->setId($product->getId());
             $data->setSku($product->getSku());
             $data->setName($product->getName());
+            $data->setKeywords($product->getMetaKeyword());
             $data->setUrl($product->getUrlKey());
             $data->setImage($product->getImage());
             if ($product->getTypeId() == 'configurable')

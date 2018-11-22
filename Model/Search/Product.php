@@ -9,6 +9,7 @@ class Product implements ProductInterface
     protected $sku;
     protected $name;
     protected $url;
+    protected $keywords;
     protected $price;
     protected $image;
     protected $taxClassId;
@@ -77,6 +78,22 @@ class Product implements ProductInterface
         return $this->url;
     }
         
+    /**
+     * {@inheritdoc}
+     */
+    public function setKeywords($keywords)
+    {
+        $this->keywords = $keywords;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
+    }
+    
     /**
      * {@inheritdoc}
      */

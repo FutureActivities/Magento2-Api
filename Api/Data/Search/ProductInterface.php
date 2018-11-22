@@ -67,6 +67,21 @@ interface ProductInterface
     public function getUrl();
     
     /**
+     * Set the keywords
+     * 
+     * @param string $keywords
+     * @return $this
+     */
+    public function setKeywords($keywords);
+    
+    /**
+     * Get the Keywords
+     * 
+     * @return string
+     */
+    public function getKeywords();
+    
+    /**
      * Set the price
      * 
      * @param string $price
