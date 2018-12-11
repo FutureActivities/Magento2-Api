@@ -6,21 +6,21 @@ class Category
 {
     protected $eavAttribute;
     protected $categoryItem;
-    protected $categoryCollectionFactory;
     
     public function __construct(\Magento\Eav\Model\ResourceModel\Entity\Attribute $eavAttribute,
         \FutureActivities\Api\Model\Category\ItemFactory $categoryItem)
     {
         $this->eavAttribute = $eavAttribute;
         $this->categoryItem = $categoryItem;
-        // $this->categoryCollectionFactory = $categoryCollectionFactory;
     }
     
     public function afterGet($subject, $result)
     {
         $extensionAttributes = $result->getExtensionAttributes();
         
-        $children = $result->getChildrenCategories();
+        // Add next level category children
+        $children = $result->getChildrenCategories()->addAttributeToSelect('*');
+
         $categories = [];
         
         foreach ($children AS $child) {
