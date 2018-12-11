@@ -22,6 +22,12 @@
         <plugin name="FutureActivities_Api::linkManagement" type="FutureActivities\Api\Plugin\LinkManagement" sortOrder="1" disabled="false"/>
     </type>
     <type name="Magento\Catalog\Api\ProductRepositoryInterface">
-        <plugin name="FutureActivities_Api::get" type="FutureActivities\Api\Plugin\Product"/>
+        <plugin name="FutureActivities_Api::getProduct" type="FutureActivities\Api\Plugin\Product"/>
+    </type>
+    <type name="Magento\Catalog\Api\Data\CategoryInterface">
+        <plugin name="FutureActivities_Api::category" type="FutureActivities\Api\Plugin\CategoryAttributes"/>
+    </type>
+    <type name="Magento\Catalog\Api\CategoryRepositoryInterface">
+        <plugin name="FutureActivities_Api::getCategory" type="FutureActivities\Api\Plugin\Category"/>
     </type>
 </config>

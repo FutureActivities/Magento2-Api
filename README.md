@@ -111,6 +111,11 @@ Override the `getChildren` function to ensure response contains the extension
 attributes and media gallery. Due to a bug in Magento this is missing by default.
 See: https://github.com/magento/magento2/issues/8700
 
+### Category Repository
+
+Adds `category_children` to extension attributes, with this containing more details 
+about the child category.
+
 ### Product Repository
 
 Add `configurable_product_options_labels` to extension attributes.

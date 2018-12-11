@@ -7,4 +7,7 @@
         <attribute code="configurable_product_options_labels" type="Magento\Framework\Api\AttributeValue[]" />
         <attribute code="stock_status" type="string" />
     </extension_attributes>
+    <extension_attributes for="Magento\Catalog\Api\Data\CategoryInterface">
+        <attribute code="category_children" type="FutureActivities\Api\Api\Data\Category\ItemInterface[]" />
+    </extension_attributes>
 </config>
