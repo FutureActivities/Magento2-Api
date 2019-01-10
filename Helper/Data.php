@@ -46,15 +46,18 @@ class Data extends AbstractHelper
         if (empty($result))
             return false;
             
-        // Only 1 result
         if (count($result) == 1)
             return current($result);
             
-        // If more than 1, lets return the one that matches the url key exactly
         foreach ($result as $rewrite) {
-            if ($rewrite['request_path'] === $key)
-                return $rewrite;
+            $parts = explode('/', $rewrite['request_path']);
+            foreach ($parts AS $part) {
+                if ($part === $key)
+                    return $rewrite;
+            }
         }
+        
+        return false;
         
         // OLD: Magento URL finder doesn't support wildcard searches
         // $filter = [
