@@ -49,10 +49,14 @@ class Data extends AbstractHelper
         if (count($result) == 1)
             return current($result);
             
+        // Do any of the result match exactly?
         foreach ($result as $rewrite) {
             if ($rewrite['request_path'] == $key)
                 return $rewrite;
-            
+        }
+        
+        // Do any of the results have a partial match?
+        foreach ($result as $rewrite) {
             $parts = explode('/', $rewrite['request_path']);
             foreach ($parts AS $part) {
                 if ($part === $key)
