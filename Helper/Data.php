@@ -50,6 +50,9 @@ class Data extends AbstractHelper
             return current($result);
             
         foreach ($result as $rewrite) {
+            if ($rewrite['request_path'] == $key)
+                return $rewrite;
+            
             $parts = explode('/', $rewrite['request_path']);
             foreach ($parts AS $part) {
                 if ($part === $key)
