@@ -34,8 +34,10 @@ class Page implements \FutureActivities\Api\Api\PageInterface
             throw new \Magento\Framework\Exception\NotFoundException(__('Page not found'));
             
         $result = new PageResult();
-        $result->setType($rewrite->getEntityType());
-        $result->setId($rewrite->getEntityId());
+        // $result->setType($rewrite->getEntityType());
+        // $result->setId($rewrite->getEntityId());
+        $result->setType($rewrite['entity_type']);
+        $result->setId($rewrite['entity_id']);
         
         return $result;
     }

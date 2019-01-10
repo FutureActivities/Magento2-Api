@@ -14,15 +14,17 @@ class Data extends AbstractHelper
     private $urlFinder;
     private $configurable;
     private $pageFactory;
+    private $resource;
     
     const XML_PATH_MAGENTO2API = 'magento2api/general';
     
-    public function __construct(\Magento\Framework\App\Helper\Context $context, UrlFinderInterface $urlFinder, Configurable $configurable) 
+    public function __construct(\Magento\Framework\App\Helper\Context $context, UrlFinderInterface $urlFinder, Configurable $configurable, \Magento\Framework\App\ResourceConnection $resource) 
     {
         parent::__construct($context);
         
         $this->urlFinder = $urlFinder;
         $this->configurable = $configurable;
+        $this->resource = $resource;
     }
     
     /**
@@ -33,14 +35,36 @@ class Data extends AbstractHelper
      */
     public function getObjectByKey($key, $storeId = null)
     {
-        $filter = [
-           UrlRewrite::REQUEST_PATH => $key
-        ];
+        $storeSql = null;
+        if ($storeId) 
+            $storeSql = ' AND store_id = '.$storeId;
+            
+        $sql = sprintf('SELECT `url_rewrite`.* FROM `url_rewrite` WHERE request_path LIKE \'%%%s%%\' %s', $key, $storeSql);
+        $connection = $this->resource->getConnection();
+        $result = $connection->fetchAll($sql);
         
-        if ($storeId)
-            $filter[UrlRewrite::STORE_ID] = $storeId;
+        if (empty($result))
+            return false;
+            
+        // Only 1 result
+        if (count($result) == 1)
+            return current($result);
+            
+        // If more than 1, lets return the one that matches the url key exactly
+        foreach ($result as $rewrite) {
+            if ($rewrite['request_path'] === $key)
+                return $rewrite;
+        }
         
-        return $this->urlFinder->findOneByData($filter);
+        // OLD: Magento URL finder doesn't support wildcard searches
+        // $filter = [
+        //   UrlRewrite::REQUEST_PATH => $key
+        // ];
+        
+        // if ($storeId)
+        //     $filter[UrlRewrite::STORE_ID] = $storeId;
+        
+        // return $this->urlFinder->findOneByData($filter);
     }
     
     /**
