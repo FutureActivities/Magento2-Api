@@ -9,6 +9,8 @@ use FutureActivities\Api\Model\Search\PageFactory;
 
 class Search implements SearchInterface
 {
+    protected $storeManager;
+    
     protected $productCollectionFactory;
     protected $categoryCollectionFactory;
     protected $categoryRepository;
@@ -21,6 +23,7 @@ class Search implements SearchInterface
     protected $pageFactory;
 
     public function __construct(
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
         \Magento\Catalog\Model\CategoryRepository $categoryRepository,
@@ -31,6 +34,7 @@ class Search implements SearchInterface
         CategoryFactory $categoryFactory,
         PageFactory $pageFactory
     ) {
+        $this->storeManager = $storeManager;  
         $this->productCollectionFactory = $productCollectionFactory;
         $this->categoryCollectionFactory = $categoryCollectionFactory;
         $this->categoryRepository = $categoryRepository;
@@ -62,6 +66,7 @@ class Search implements SearchInterface
         
         $collection = $this->productCollectionFactory->create();
         $collection->addAttributeToSelect(['name','price','price_from','image','visibility','url_key','status','tax_class_id','meta_keyword']);
+        $collection->addStoreFilter($this->storeManager->getStore()->getId());
         
         foreach($collection AS $product) {
             // Skip products not visible
