@@ -1,7 +1,7 @@
 {
     "name": "futureactivities/magento2-api",
     "description": "A Magento 2 REST API helper module.",
-    "version": "1.6.10",
+    "version": "1.6.11",
     "type": "magento2-module",
     "require": {
     },

@@ -35,12 +35,10 @@ class Data extends AbstractHelper
      */
     public function getObjectByKey($key, $storeId = null)
     {
-        $storeSql = null;
-        if ($storeId) 
-            $storeSql = ' AND store_id = '.$storeId;
-            
-        $sql = sprintf('SELECT `url_rewrite`.* FROM `url_rewrite` WHERE request_path LIKE \'%%%s%%\' %s', $key, $storeSql);
         $connection = $this->resource->getConnection();
+        $sql = $connection->select()->from('url_rewrite')->where('request_path LIKE ?', '%%'.$key.'%%');
+        if ($storeId)
+            $sql->where('store_id = ?', $storeId);
         $result = $connection->fetchAll($sql);
         
         if (empty($result))
