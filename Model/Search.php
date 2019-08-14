@@ -84,6 +84,7 @@ class Search implements SearchInterface
             else 
                 $data->setPrice($product->getPrice());
             $data->setTaxClassId($product->getTaxClassId());
+            $data->setCategories($product->getCategoryIds());
             
             $result[] = $data;
         }

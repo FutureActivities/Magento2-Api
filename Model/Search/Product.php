@@ -13,6 +13,7 @@ class Product implements ProductInterface
     protected $price;
     protected $image;
     protected $taxClassId;
+    protected $categories;
     
     /**
      * {@inheritdoc}
@@ -140,5 +141,21 @@ class Product implements ProductInterface
     public function getImage()
     {
         return $this->image;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getCategories() 
+    {
+        return $this->categories;
     }
 }

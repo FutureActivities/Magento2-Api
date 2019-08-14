@@ -125,4 +125,19 @@ interface ProductInterface
      * @return string
      */
     public function getImage();
+    
+    /**
+     * Set the categories
+     * 
+     * @param array $categories
+     * @return $this
+     */
+    public function setCategories($categories);
+    
+    /**
+     * Get the categories
+     * 
+     * @return array
+     */
+    public function getCategories();
 }
