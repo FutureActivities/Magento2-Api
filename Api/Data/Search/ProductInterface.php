@@ -97,6 +97,51 @@ interface ProductInterface
     public function getPrice();
     
     /**
+     * Get special price
+     * 
+     * @return string
+     */
+    public function getSpecialPrice();
+    
+    /**
+     * Set special price
+     * 
+     * @param string $price
+     * @return $this
+     */
+    public function setSpecialPrice($price);
+    
+    /**
+     * Get special from date
+     * 
+     * @return string
+     */
+    public function getSpecialFromDate();
+    
+    /**
+     * Set special from date
+     * 
+     * @param string $date
+     * @return $this
+     */
+    public function setSpecialFromDate($date);
+    
+    /**
+     * Get special to date
+     * 
+     * @return string
+     */
+    public function getSpecialToDate();
+    
+    /**
+     * Set special to date
+     * 
+     * @param string $date
+     * @return $this
+     */
+    public function setSpecialToDate($date);
+    
+    /**
      * Set the tax class id
      * 
      * @param int $id

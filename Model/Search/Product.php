@@ -11,6 +11,9 @@ class Product implements ProductInterface
     protected $url;
     protected $keywords;
     protected $price;
+    protected $specialPrice;
+    protected $specialFromDate;
+    protected $specialToDate;
     protected $image;
     protected $taxClassId;
     protected $categories;
@@ -109,6 +112,54 @@ class Product implements ProductInterface
     public function getPrice()
     {
         return $this->price;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setSpecialPrice($price)
+    {
+        $this->specialPrice = $price;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getSpecialPrice()
+    {
+        return $this->specialPrice;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setSpecialFromDate($date)
+    {
+        $this->specialFromDate = $date;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getSpecialFromDate()
+    {
+        return $this->specialFromDate;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setSpecialToDate($date)
+    {
+        $this->specialToDate = $date;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getSpecialToDate()
+    {
+        return $this->specialToDate;
     }
     
     /**

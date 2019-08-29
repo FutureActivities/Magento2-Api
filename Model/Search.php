@@ -65,7 +65,7 @@ class Search implements SearchInterface
         $result = [];
         
         $collection = $this->productCollectionFactory->create();
-        $collection->addAttributeToSelect(['name','price','price_from','image','visibility','url_key','status','tax_class_id','meta_keyword']);
+        $collection->addAttributeToSelect(['name','price','special_price', 'special_from_date', 'special_to_date', 'price_from','image','visibility','url_key','status','tax_class_id','meta_keyword']);
         $collection->addStoreFilter($this->storeManager->getStore()->getId());
         
         foreach($collection AS $product) {
@@ -83,6 +83,13 @@ class Search implements SearchInterface
                 $data->setPrice($product->getPriceFrom());
             else 
                 $data->setPrice($product->getPrice());
+                
+            if ($product->getSpecialPrice()) {
+                $data->setSpecialPrice($product->getSpecialPrice());
+                $data->setSpecialFromDate($product->getSpecialFromDate());
+                $data->setSpecialToDate($product->getSpecialToDate());
+            }
+            
             $data->setTaxClassId($product->getTaxClassId());
             $data->setCategories($product->getCategoryIds());
             
