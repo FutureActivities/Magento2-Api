@@ -11,6 +11,20 @@ class Product
         $this->eavAttribute = $eavAttribute;
     }
     
+    public function afterGet($subject, $result)
+    {
+        $extensionAttributes = $result->getExtensionAttributes();
+        
+        $extensionAttributes->setStockStatus($result->isSaleable());
+        
+        if ($result->getTypeId() == 'configurable')
+            $extensionAttributes->setConfigurableProductOptionsLabels($this->getOptions($result));
+        
+        $result->setExtensionAttributes($extensionAttributes);
+        
+        return $result;
+    }
+    
     public function afterGetById($subject, $result)
     {
         $extensionAttributes = $result->getExtensionAttributes();
