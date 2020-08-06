@@ -7,6 +7,7 @@
    <preference for="FutureActivities\Api\Api\SearchInterface" type="FutureActivities\Api\Model\Search" />
    <preference for="FutureActivities\Api\Api\Quote\AddressesManagementInterface" type="FutureActivities\Api\Model\Quote\AddressesManagement" />
    <preference for="FutureActivities\Api\Api\Quote\GuestAddressesManagementInterface" type="FutureActivities\Api\Model\Quote\GuestCart\GuestAddressesManagement" />
+   <preference for="FutureActivities\Api\Api\Quote\GuestCartValidInterface" type="FutureActivities\Api\Model\Quote\GuestCartValid" />
    <preference for="FutureActivities\Api\Api\RatesInterface" type="FutureActivities\Api\Model\Rates" />
    <preference for="FutureActivities\Api\Api\RateResultInterface" type="FutureActivities\Api\Model\Rates\Rate" />
    <type name="Magento\Store\Api\Data\StoreInterface">

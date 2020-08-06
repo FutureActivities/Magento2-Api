@@ -126,6 +126,13 @@ instead of just an ID.
 
 Adds `display_currency` to extension attributes
 
+### Guest Cart Valid
+
+Add the following API endpoint to check if a guest cart ID
+is still valid:
+
+    GET /rest/V1/guest-carts/:guestCartId/valid
+
 ## CHANGELOG
 
 ### v1.6

@@ -86,6 +86,12 @@
             <resource ref="anonymous" />
         </resources>
     </route>
+    <route url="/V1/guest-carts/:cartId/valid" method="get">
+        <service class="FutureActivities\Api\Api\Quote\GuestCartValidInterface" method="isValid"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
     <!-- Merge customers guest cart with their logged in cart -->
     <route url="/V1/carts/mine/transfer/:guestCartId" method="GET">
        <service class="FutureActivities\Api\Api\CustomerInterface" method="mergeCarts"/>
