@@ -86,7 +86,7 @@
             <resource ref="anonymous" />
         </resources>
     </route>
-    <route url="/V1/guest-carts/:cartId/valid" method="get">
+    <route url="/V1/guest-carts/:cartId/valid" method="GET">
         <service class="FutureActivities\Api\Api\Quote\GuestCartValidInterface" method="isValid"/>
         <resources>
             <resource ref="anonymous" />
