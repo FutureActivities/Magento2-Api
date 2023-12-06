@@ -11,5 +11,5 @@ interface SearchInterface
     * @param int $parantCategory
     * @return \FutureActivities\Api\Api\Data\Search\DataInterface
     */
-   public function getSearchData($parentCategory = 2);
+   public function getSearchData(int $parentCategory = 2);
 }
